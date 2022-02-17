@@ -13,14 +13,14 @@ var _server = null;
 var socket_mav = null;
 global.mavPort = null;
 
-var mavPortNum = '/dev/ttyAMA0';
+var mavPortNum = '/dev/ttyAMA1';
 var mavBaudrate = '115200';
 var my_drone_type = 'pixhawk';
 
 
 function tas_ready() {
     if ((my_drone_type === 'pixhawk') || (my_drone_type === 'ardupilot') || (my_drone_type === 'px4')) {
-        mavPortNum = '/dev/ttyAMA0';
+        mavPortNum = '/dev/ttyAMA1';
         mavBaudrate = '115200';
         mavPortOpening();
     } else {
