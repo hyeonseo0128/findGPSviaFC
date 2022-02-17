@@ -17,7 +17,7 @@ var mavPortNum = '/dev/ttyAMA0';
 var mavBaudrate = '115200';
 var my_drone_type = 'pixhawk';
 
-
+tas_ready();
 function tas_ready() {
     if ((my_drone_type === 'pixhawk') || (my_drone_type === 'ardupilot') || (my_drone_type === 'px4')) {
         mavPortNum = '/dev/ttyAMA0';
@@ -27,11 +27,10 @@ function tas_ready() {
         console.log("drone type error!");
     }
 }
-tas_ready();
-
 
 function mavPortOpening() {
     if (mavPort == null) {
+        console.log("111");
         mavPort = new SerialPort(mavPortNum, {
             baudRate: parseInt(mavBaudrate, 10),
         });
@@ -41,10 +40,13 @@ function mavPortOpening() {
         mavPort.on('error', mavPortError);
         mavPort.on('data', mavPortData);
     } else {
+        console.log("222");
         if (mavPort.isOpen) {
+            console.log("333");
 
         } else {
             mavPort.open();
+            console.log("444");
         }
     }
 }
