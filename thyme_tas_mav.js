@@ -499,7 +499,7 @@ global.rc_param = {};
 global.rc_map = {};
 
 global.rc_channel = {};
-parseMavFromDrone(mavPacket)
+parseMavFromDrone()
 function parseMavFromDrone(mavPacket) {
     try {
         var ver = mavPacket.substr(0, 2);
@@ -527,7 +527,7 @@ function parseMavFromDrone(mavPacket) {
                 base_offset += 8;
                 var alt = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
-                var relative_alt = mavPacket.substr(base_offset, 8).toLowerCase();
+                var relative_alt = mavPacket.substr(base_offset, 8).toLowerCase(1``);
             } else {
                 base_offset = 12;
                 time_boot_ms = mavPacket.substr(base_offset, 8).toLowerCase();
