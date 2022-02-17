@@ -124,6 +124,9 @@ fc.global_position_int.vy = 0;
 fc.global_position_int.vz = 0;
 fc.global_position_int.hdg = 65535;
 
+var lat = "";
+var lon = "";
+
 function parseMavFromDrone(mavPacket) {
     console.log(mavPacket);
     try {
@@ -147,9 +150,9 @@ function parseMavFromDrone(mavPacket) {
                 var base_offset = 20;
                 var time_boot_ms = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
-                var lat = mavPacket.substr(base_offset, 8).toLowerCase();
+                lat = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
-                var lon = mavPacket.substr(base_offset, 8).toLowerCase();
+                lon = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
                 var alt = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
