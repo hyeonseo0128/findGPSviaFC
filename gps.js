@@ -164,6 +164,7 @@ function parseMavFromDrone(mavPacket) {
 
             fc.global_position_int.time_boot_ms = Buffer.from(time_boot_ms, 'hex').readUInt32LE(0);
             fc.global_position_int.lat = Buffer.from(lat, 'hex').readInt32LE(0);
+            console.log(fc.global_position_int.lat);
             fc.global_position_int.lon = Buffer.from(lon, 'hex').readInt32LE(0);
             fc.global_position_int.alt = Buffer.from(alt, 'hex').readInt32LE(0);
             fc.global_position_int.relative_alt = Buffer.from(relative_alt, 'hex').readInt32LE(0);
