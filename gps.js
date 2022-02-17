@@ -182,6 +182,9 @@ function parseMavFromDrone(mavPacket) {
     }
 }
 
+console.log("lat, lon: ", fc.global_position_int.lat, fc.global_position_int.lon);
+
+
 function saveFile() {
     fs.appendFile('./gps_location.txt', [fc.global_position_int.lat, fc.global_position_int.lon] + "\n", 'utf8', function (error) {
         if (error) {
