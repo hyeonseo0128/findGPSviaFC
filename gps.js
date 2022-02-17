@@ -173,6 +173,9 @@ function parseMavFromDrone(mavPacket) {
             fc.global_position_int.alt = Buffer.from(alt, 'hex').readInt32LE(0);
             fc.global_position_int.relative_alt = Buffer.from(relative_alt, 'hex').readInt32LE(0);
             
+            console.log("fc: ", fc);
+
+            
             muv_mqtt_client.publish(muv_pub_fc_gpi_topic, JSON.stringify(fc.global_position_int));
         }
     } catch (e) {
@@ -182,7 +185,6 @@ function parseMavFromDrone(mavPacket) {
 
 console.log("lat1, lon1: ", fc.global_position_int.lat, fc.global_position_int.lon);
 console.log("lat2, lon2: ", lat, lon);
-console.log("fc: ", fc);
 
 function saveFile() {
     fs.appendFile('./gps_location.txt', [fc.global_position_int.lat, fc.global_position_int.lon] + "\n", 'utf8', function (error) {
