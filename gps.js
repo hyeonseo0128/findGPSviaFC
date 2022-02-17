@@ -30,7 +30,6 @@ function tas_ready() {
 
 function mavPortOpening() {
     if (mavPort == null) {
-        console.log("111");
         mavPort = new SerialPort(mavPortNum, {
             baudRate: parseInt(mavBaudrate, 10),
         });
@@ -40,13 +39,10 @@ function mavPortOpening() {
         mavPort.on('error', mavPortError);
         mavPort.on('data', mavPortData);
     } else {
-        console.log("222");
         if (mavPort.isOpen) {
-            console.log("333");
 
         } else {
             mavPort.open();
-            console.log("444");
         }
     }
 }
@@ -86,15 +82,18 @@ var mavStrFromDrone = '';
 var mavStrFromDroneLength = 0;
 
 function mavPortData(data) {
-    console.log("!@#!@#!@#");
+    console.log("111");
     mavStrFromDrone += data.toString('hex').toLowerCase();
     while (mavStrFromDrone.length > 12) {
+        console.log("222");
         var stx = mavStrFromDrone.substr(0, 2);
         if (stx === 'fe') {
+            console.log("333");
             var len = parseInt(mavStrFromDrone.substr(2, 2), 16);
             var mavLength = (6 * 2) + (len * 2) + (2 * 2);
 
             if ((mavStrFromDrone.length) >= mavLength) {
+                console.log("444");
                 var mavPacket = mavStrFromDrone.substr(0, mavLength);
                 setTimeout(parseMavFromDrone, 0, mavPacket);
 
@@ -106,6 +105,7 @@ function mavPortData(data) {
                 break;
             }
         } else {
+            console.log("555");
             mavStrFromDrone = mavStrFromDrone.substr(2);
             //console.log(mavStrFromDrone);
         }
