@@ -113,8 +113,8 @@ var fc = {};
 
 fc.global_position_int = {};
 fc.global_position_int.time_boot_ms = 123456789;
-fc.global_position_int.lat = 0;
-fc.global_position_int.lon = 0;
+fc.global_position_int.lat = 1;
+fc.global_position_int.lon = 1;
 fc.global_position_int.alt = 0;
 fc.global_position_int.vx = 0;
 fc.global_position_int.vy = 0;
