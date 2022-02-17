@@ -35,9 +35,13 @@ function mavPortOpening() {
         });
 
         mavPort.on('open', mavPortOpen);
+        console.log("123");
         mavPort.on('close', mavPortClose);
+        console.log("456");
         mavPort.on('error', mavPortError);
+        console.log("789");
         mavPort.on('data', mavPortData);
+        console.log("1000");
     } else {
         if (mavPort.isOpen) {
 
