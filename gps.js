@@ -182,6 +182,7 @@ function parseMavFromDrone(mavPacket) {
 
 console.log("lat1, lon1: ", fc.global_position_int.lat, fc.global_position_int.lon);
 console.log("lat2, lon2: ", lat, lon);
+console.log("fc: ", fc);
 
 function saveFile() {
     fs.appendFile('./gps_location.txt', [fc.global_position_int.lat, fc.global_position_int.lon] + "\n", 'utf8', function (error) {
