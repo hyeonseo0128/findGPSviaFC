@@ -168,8 +168,6 @@ function parseMavFromDrone(mavPacket) {
             fc.global_position_int.lon = Buffer.from(lon, 'hex').readInt32LE(0);
             fc.global_position_int.alt = Buffer.from(alt, 'hex').readInt32LE(0);
             fc.global_position_int.relative_alt = Buffer.from(relative_alt, 'hex').readInt32LE(0);
-            
-            muv_mqtt_client.publish(muv_pub_fc_gpi_topic, JSON.stringify(fc.global_position_int));
         }
     } catch (e) {
         console.log('[parseMavFromDrone Error]', e.message);
