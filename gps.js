@@ -84,6 +84,7 @@ var mavStrFromDrone = '';
 var mavStrFromDroneLength = 0;
 
 function mavPortData(data) {
+    console.log("!@#!@#!@#");
     mavStrFromDrone += data.toString('hex').toLowerCase();
     while (mavStrFromDrone.length > 12) {
         var stx = mavStrFromDrone.substr(0, 2);
