@@ -483,6 +483,7 @@ global.rc_map = {};
 global.rc_channel = {};
 
 function parseMavFromDrone(mavPacket) {
+    console.log(mavPacket);
     try {
         var ver = mavPacket.substr(0, 2);
         if (ver == 'fd') {
