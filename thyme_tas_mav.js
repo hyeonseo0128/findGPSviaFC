@@ -499,7 +499,7 @@ global.rc_param = {};
 global.rc_map = {};
 
 global.rc_channel = {};
-parseMavFromDrone()
+
 function parseMavFromDrone(mavPacket) {
     try {
         var ver = mavPacket.substr(0, 2);
@@ -546,7 +546,7 @@ function parseMavFromDrone(mavPacket) {
             fc.global_position_int.lon = Buffer.from(lon, 'hex').readInt32LE(0);
             fc.global_position_int.alt = Buffer.from(alt, 'hex').readInt32LE(0);
             fc.global_position_int.relative_alt = Buffer.from(relative_alt, 'hex').readInt32LE(0);
-            console.log("!!!!!!!!!!!!!!!!! ", fc.global_position_int.lat, "  !!!!!!!  ", fc.global_position_int.lon)
+            
             muv_mqtt_client.publish(muv_pub_fc_gpi_topic, JSON.stringify(fc.global_position_int));
         } else if (msg_id == mavlink.MAVLINK_MSG_ID_COMMAND_LONG) { // #76 : COMMAND_LONG
             // if(authResult == 'done') {
@@ -939,7 +939,7 @@ function parseMavFromDrone(mavPacket) {
         console.log('[parseMavFromDrone Error]', e.message);
     }
 }
-
+console.log("!!!!!!!!!!!!!!!!! ", fc.global_position_int.lat, "  !!!!!!!  ", fc.global_position_int.lon)
 var end_arm_time = 0;
 var arming_time = 0;
 var flight_time = {};
