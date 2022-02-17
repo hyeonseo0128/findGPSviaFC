@@ -35,13 +35,9 @@ function mavPortOpening() {
         });
 
         mavPort.on('open', mavPortOpen);
-        console.log("123");
         mavPort.on('close', mavPortClose);
-        console.log("456");
         mavPort.on('error', mavPortError);
-        console.log("789");
         mavPort.on('data', mavPortData);
-        console.log("1000");
     } else {
         if (mavPort.isOpen) {
 
@@ -86,18 +82,14 @@ var mavStrFromDrone = '';
 var mavStrFromDroneLength = 0;
 
 function mavPortData(data) {
-    console.log("111");
     mavStrFromDrone += data.toString('hex').toLowerCase();
     while (mavStrFromDrone.length > 12) {
-        console.log("222");
         var stx = mavStrFromDrone.substr(0, 2);
         if (stx === 'fe') {
-            console.log("333");
             var len = parseInt(mavStrFromDrone.substr(2, 2), 16);
             var mavLength = (6 * 2) + (len * 2) + (2 * 2);
 
             if ((mavStrFromDrone.length) >= mavLength) {
-                console.log("444");
                 var mavPacket = mavStrFromDrone.substr(0, mavLength);
                 setTimeout(parseMavFromDrone, 0, mavPacket);
 
@@ -109,7 +101,6 @@ function mavPortData(data) {
                 break;
             }
         } else {
-            console.log("555");
             mavStrFromDrone = mavStrFromDrone.substr(2);
             //console.log(mavStrFromDrone);
         }
