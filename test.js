@@ -15,6 +15,7 @@ global.mavPort = null;
 
 var mavPortNum = '/dev/ttyAMA0';
 var mavBaudrate = '115200';
+var my_drone_type = 'pixhawk';
 
 tas_ready()
 function tas_ready() {
