@@ -23,6 +23,7 @@ function tas_ready() {
         mavPortNum = '/dev/ttyAMA0';
         mavBaudrate = '115200';
         mavPortOpening();
+        mavPortData();
     } else {
         console.log("drone type error!");
     }
