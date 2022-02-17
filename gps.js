@@ -121,9 +121,6 @@ fc.global_position_int.vy = 0;
 fc.global_position_int.vz = 0;
 fc.global_position_int.hdg = 65535;
 
-var lat = "";
-var lon = "";
-
 function parseMavFromDrone(mavPacket) {
     try {
         var ver = mavPacket.substr(0, 2);
@@ -145,9 +142,9 @@ function parseMavFromDrone(mavPacket) {
                 var base_offset = 20;
                 var time_boot_ms = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
-                lat = mavPacket.substr(base_offset, 8).toLowerCase();
+                var lat = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
-                lon = mavPacket.substr(base_offset, 8).toLowerCase();
+                var lon = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
                 var alt = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
@@ -177,7 +174,7 @@ function parseMavFromDrone(mavPacket) {
 }
 
 function saveFile() {
-    fs.appendFile('./gps_location.txt', [lat, lon] + "\n", 'utf8', function (error) {
+    fs.appendFile('./gps_location.txt', [fc.global_position_int.lat, fc.global_position_int.lon] + "\n", 'utf8', function (error) {
         if (error) {
             console.log(error)
         }
