@@ -499,7 +499,7 @@ global.rc_param = {};
 global.rc_map = {};
 
 global.rc_channel = {};
-
+parseMavFromDrone(mavPacket)
 function parseMavFromDrone(mavPacket) {
     try {
         var ver = mavPacket.substr(0, 2);
