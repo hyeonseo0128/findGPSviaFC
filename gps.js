@@ -190,6 +190,7 @@ pushButton.watch(function (err, value) { //Watch for hardware interrupts on push
         return;
     }
     console.log("button: ",pushButton.readSync());
+    console.log("lat, lon: ", lat, lon);
     if (pushButton.readSync() == 0) { //check the pin state, if the state is 0 (or off)
         saveFile()
     }
