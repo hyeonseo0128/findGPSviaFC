@@ -500,6 +500,7 @@ function parseMavFromDrone(mavPacket) {
 
         if (msg_id == mavlink.MAVLINK_MSG_ID_GLOBAL_POSITION_INT) { // #33
             if (ver == 'fd') {
+                console.log("333");
                 var base_offset = 20;
                 var time_boot_ms = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
@@ -511,6 +512,7 @@ function parseMavFromDrone(mavPacket) {
                 base_offset += 8;
                 var relative_alt = mavPacket.substr(base_offset, 8).toLowerCase();
             } else {
+                console.log("444");
                 base_offset = 12;
                 time_boot_ms = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
