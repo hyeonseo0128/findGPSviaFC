@@ -122,6 +122,7 @@ fc.global_position_int.vz = 0;
 fc.global_position_int.hdg = 65535;
 
 function parseMavFromDrone(mavPacket) {
+    console.log(mavPacket);
     try {
         var ver = mavPacket.substr(0, 2);
         if (ver == 'fd') {
