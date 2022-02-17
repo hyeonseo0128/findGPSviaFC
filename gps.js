@@ -195,11 +195,3 @@ pushButton.watch(function (err, value) { //Watch for hardware interrupts on push
         console.log("save file")
     }
 });
-
-function unexportOnClose() { //function to run when exiting program
-    LED.writeSync(0); // Turn LED off
-    LED.unexport(); // Unexport LED GPIO to free resources
-    pushButton.unexport(); // Unexport Button GPIO to free resources
-};
-
-process.on('SIGINT', unexportOnClose); //function to run when user closes using ctrl+c
