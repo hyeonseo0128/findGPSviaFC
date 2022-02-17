@@ -3,6 +3,7 @@ var ip = require('ip');
 var moment = require('moment');
 var fs = require('fs');
 var Gpio = require('onoff').Gpio; 
+var SerialPort = require('serialport');
 
 var pushButton = new Gpio(19, 'in', 'both'); 
 var mavlink = require('./mavlibrary/mavlink.js');
@@ -15,7 +16,7 @@ global.mavPort = null;
 var mavPortNum = '/dev/ttyAMA0';
 var mavBaudrate = '115200';
 var my_drone_type = 'pixhawk';
-tas_ready();
+
 
 function tas_ready() {
     if ((my_drone_type === 'pixhawk') || (my_drone_type === 'ardupilot') || (my_drone_type === 'px4')) {
@@ -23,10 +24,11 @@ function tas_ready() {
         mavBaudrate = '115200';
         mavPortOpening();
     } else {
+        console.log("drone type error!");
     }
 }
+tas_ready();
 
-var SerialPort = require('serialport');
 
 function mavPortOpening() {
     if (mavPort == null) {
