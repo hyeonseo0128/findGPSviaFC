@@ -192,7 +192,7 @@ pushButton.watch(function (err, value) { //Watch for hardware interrupts on push
         saveFile()
     }
     else {
-        saveFile()
+        console.log("save file")
     }
 });
 
