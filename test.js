@@ -532,6 +532,7 @@ function parseMavFromDrone(mavPacket) {
             muv_mqtt_client.publish(muv_pub_fc_gpi_topic, JSON.stringify(fc.global_position_int));
         } else if (msg_id == mavlink.MAVLINK_MSG_ID_HEARTBEAT) { // #00 : HEARTBEAT
             if (ver == 'fd') {
+                console.log("111");
                 base_offset = 20;
                 var custom_mode = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
@@ -545,6 +546,7 @@ function parseMavFromDrone(mavPacket) {
                 base_offset += 2;
                 var mavlink_version = mavPacket.substr(base_offset, 2).toLowerCase();
             } else {
+                console.log("222");
                 base_offset = 12;
                 custom_mode = mavPacket.substr(base_offset, 8).toLowerCase();
                 base_offset += 8;
